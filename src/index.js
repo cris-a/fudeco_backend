@@ -54,19 +54,3 @@ app.use('/api/v1/portal-pago', webpay_route);
 const servidor = app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')} `);
 });
-
-// Socket.io
-
-// import { Server } from 'socket.io';
-// const io = new Server(servidor, {
-//   pingTimeout: 60000,
-//   cors: {
-//     origin: process.env.FUDECO_URL,
-//   },
-// });
-
-// io.on('connection', (socket) => {
-//   console.log('conectado a socket.io');
-
-//   // definir los eventos de socket.io
-// });

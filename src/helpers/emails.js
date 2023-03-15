@@ -115,7 +115,7 @@ export const emailOlvidePasswordCliente = async (datos) => {
     text: 'Restablece tu password',
     html: `<p>Hola: ${nombre} has solicitado reestablecer tu password</p>
         <p>Sigue el siguente enlace para generar un nuevo password:
-        <a href="${process.env.FONTEND_URL}/tienda/olvide-contraseña/${token}">Reestablecer password</a></p>
+        <a href="${process.env.FONTEND_URL}/tienda/cliente/olvide-contraseña/${token}">Reestablecer password</a></p>
 
         <p>Si no solicitaste este email, por favor ignora este mensaje</p>
         

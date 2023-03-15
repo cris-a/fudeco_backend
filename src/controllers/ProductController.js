@@ -3,7 +3,7 @@ import Producto from '../models/Producto.js';
 const todosLosProductos = async (req, res) => {
   const { page, limit } = req.query;
   const pageNumber = page || 1;
-  const pageSize = limit || 3;
+  const pageSize = limit || 8;
   try {
     const total = await Producto.countDocuments();
     const lista = await Producto.find()

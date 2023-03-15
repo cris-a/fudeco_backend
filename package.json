@@ -7,7 +7,6 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "build": "node build",
     "webpack": "webpack --mode development"
   },
   "keywords": [],
