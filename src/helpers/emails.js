@@ -21,7 +21,7 @@ export const emailRegistro = async (datos) => {
     text: 'Comprueba tu cuenta en Fudeco',
     html: `<p>Hola: ${nombre} Comprueba tu cuenta en Fudeco</p>
         <p>Tu cuenta ya esta casi lista, solo debes comprobarla en el siguente enlace:
-        <a href="${process.env.FONTEND_URL}/confirmar/${token}">Comprobar cuenta</a></p>
+        <a href="${process.env.FONTEND_URL}/administracion/confirmar/${token}">Comprobar cuenta</a></p>
 
         <p>Si no creaste esta cuenta, por favor ignora este mensaje</p>
         
@@ -53,7 +53,7 @@ export const emailOlvidePassword = async (datos) => {
     text: 'Restablece tu password',
     html: `<p>Hola: ${nombre} has solicitado reestablecer tu password</p>
         <p>Sigue el siguente enlace para generar un nuevo password:
-        <a href="${process.env.FONTEND_URL}/olvide-password/${token}">Reestablecer password</a></p>
+        <a href="${process.env.FONTEND_URL}/administracion/olvide-password/${token}">Reestablecer password</a></p>
 
         <p>Si no solicitaste este email, por favor ignora este mensaje</p>
         
