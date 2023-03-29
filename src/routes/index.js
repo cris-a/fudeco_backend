@@ -8,6 +8,7 @@ import media_route from './media.js';
 import cliente_route from './Clientes.js';
 import newsletter_route from './Newsletter.js';
 import webpay_route from './Webpay.js';
+import subCategoria_router from './subCategoria.js';
 
 export {
   auth_route,
@@ -20,4 +21,5 @@ export {
   cliente_route,
   newsletter_route,
   webpay_route,
+  subCategoria_router,
 };

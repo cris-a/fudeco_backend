@@ -13,6 +13,7 @@ import {
   cliente_route,
   newsletter_route,
   webpay_route,
+  subCategoria_router,
 } from './routes/index.js';
 
 const app = express();
@@ -50,6 +51,7 @@ app.use('/api/v1/upload', media_route);
 app.use('/api/v1/clientes', cliente_route);
 app.use('/api/v1/newsletter', newsletter_route);
 app.use('/api/v1/portal-pago', webpay_route);
+app.use('/api/v1/subcategoria', subCategoria_router);
 
 const servidor = app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')} `);

@@ -1,9 +1,9 @@
 import Producto from '../models/Producto.js';
 
 const todosLosProductos = async (req, res) => {
-  const { page, limit } = req.query;
+  const { page } = req.query;
   const pageNumber = page || 1;
-  const pageSize = limit || 8;
+  const pageSize = 12;
   try {
     const total = await Producto.countDocuments();
     const lista = await Producto.find()
