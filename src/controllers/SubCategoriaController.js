@@ -71,9 +71,9 @@ const borrarSubcategoria = async (req, res) => {
 };
 
 const todasSubCategorias = async (req, res) => {
-  const { page, limit } = req.query;
+  const { page } = req.query;
   const pageNumber = page || 1;
-  const pageSize = limit || 12;
+  const pageSize = 14;
   try {
     const total = await SubCategoria.countDocuments();
     const lista = await SubCategoria.find()

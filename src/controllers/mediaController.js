@@ -3,9 +3,15 @@ import upload from '../middleware/multerMedia.js';
 
 const mediaController = {
   async index(req, res, next) {
+    const { page, limit } = req.query;
+    const pageNumber = page || 1;
+    const pageSize = limit || 40;
     try {
-      const result = await Media.find();
-      return res.json(result);
+      const result = await Media.countDocuments();
+      const lista = await Media.find()
+        .skip(pageSize * (pageNumber - 1))
+        .limit(pageSize);
+      res.status(200).json({ pageSize, pageNumber, lista, result });
     } catch (error) {
       return next(error);
     }

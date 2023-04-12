@@ -4,7 +4,6 @@ import {
   borrarSubcategoria,
   mostrarSubCategorias,
   nuevaSubCategoria,
-  todasSubCategorias,
 } from '../controllers/SubCategoriaController.js';
 const router = express.Router();
 
