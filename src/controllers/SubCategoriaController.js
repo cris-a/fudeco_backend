@@ -71,17 +71,15 @@ const borrarSubcategoria = async (req, res) => {
 };
 
 const todasSubCategorias = async (req, res) => {
-  const { page } = req.query;
-  const pageNumber = page || 1;
-  const pageSize = 14;
+  // const { page } = req.query;
+  // const pageNumber = page || 1;
+  // const pageSize = 14;
   try {
-    const total = await SubCategoria.countDocuments();
-    const lista = await SubCategoria.find()
-      .skip(pageSize * (pageNumber - 1))
-      .limit(pageSize);
-    res
-      .status(200)
-      .json({ type: 'Exitoso', pageSize, pageNumber, lista, total });
+    // const total = await SubCategoria.countDocuments();
+    const lista = await SubCategoria.find();
+    // .skip(pageSize * (pageNumber - 1))
+    // .limit(pageSize);
+    res.status(200).json({ type: 'Exitoso', lista });
   } catch (error) {
     res.status(500).json({
       type: 'error',

@@ -22,17 +22,10 @@ const todosLosProductos = async (req, res) => {
 };
 
 const todosLosProductosCompleto = async (req, res) => {
-  const { page, limit } = req.query;
-  const pageNumber = page || 1;
-  const pageSize = limit || 12;
   try {
-    const total = await Producto.countDocuments();
-    const lista = await Producto.find()
-      .skip(pageSize * (pageNumber - 1))
-      .limit(pageSize);
-    res
-      .status(200)
-      .json({ type: 'Exitoso', pageSize, pageNumber, lista, total });
+    const lista = await Producto.find();
+
+    res.status(200).json({ type: 'Exitoso', lista });
   } catch (error) {
     res.status(500).json({
       type: 'error',
