@@ -1,11 +1,14 @@
 import Media from '../models/Media.js';
-import upload from '../middleware/multerMedia.js';
+import Imagenes from '../models/imagenes.js';
+import uploads from '../middleware/multerMedia.js';
+import multer from 'multer';
+import { unlink } from 'node:fs';
 
 const mediaController = {
   async index(req, res, next) {
     const { page, limit } = req.query;
     const pageNumber = page || 1;
-    const pageSize = limit || 40;
+    const pageSize = limit || 10;
     try {
       const result = await Media.countDocuments();
       const lista = await Media.find()
@@ -17,35 +20,35 @@ const mediaController = {
     }
   },
 
-  async store(req, res) {
-    upload(req, res, async (err) => {
-      const body = req.body;
+  // async store(req, res) {
+  //   upload(req, res, async (err) => {
+  //     const body = req.body;
 
-      try {
-        const storedGallery = await Media.create(body);
-        storedGallery.save();
+  //     try {
+  //       const storedGallery = await Media.create(body);
+  //       storedGallery.save();
 
-        res.status(200).json({ msg: 'guardado con exito' });
-      } catch (error) {
-        res.status(409).json({ message: error.message });
-      }
-    });
-  },
+  //       res.status(200).json({ msg: 'guardado con exito' });
+  //     } catch (error) {
+  //       res.status(409).json({ message: error.message });
+  //     }
+  //   });
+  // },
 
-  async destroy(req, res, next) {
-    try {
-      await Media.findByIdAndDelete(req.params.id);
-      res.status(200).json({
-        msg: 'Producto Eliminado',
-      });
-    } catch (error) {
-      res.status(500).json({
-        type: 'error',
-        message: 'Algo salió mal, intenta nuevamente desde producto',
-        error,
-      });
-    }
-  },
+  // async destroy(req, res, next) {
+  //   try {
+  //     await Media.findByIdAndDelete(req.params.id);
+  //     res.status(200).json({
+  //       msg: 'Producto Eliminado',
+  //     });
+  //   } catch (error) {
+  //     res.status(500).json({
+  //       type: 'error',
+  //       message: 'Algo salió mal, intenta nuevamente desde producto',
+  //       error,
+  //     });
+  //   }
+  // },
 
   async unaImagen(req, res) {
     try {
@@ -58,6 +61,43 @@ const mediaController = {
         message: 'Algo salió mal, intenta nuevamente desde producto',
         error,
       });
+    }
+  },
+
+  async soloNombre(req, res) {
+    // const existe = await Media.findOne({ nombre: req.file.filename });
+    // if (existe) {
+    //   res.status(403).json({ type: 'error', message: 'Imagen ya existe' });
+    // }
+    const body = req.body;
+    try {
+      const dato = await Imagenes.create(body);
+      res.status(200).json({ type: 'exito', dato });
+    } catch (error) {
+      res.status(402).json({
+        type: 'error',
+        error,
+      });
+    }
+  },
+
+  async borrar(req, res) {
+    let path = req.params;
+
+    if (path) {
+      unlink(
+        `../../Test/frontend/src/data/${path.nombreImagen}`,
+        async (err) => {
+          if (err) {
+            res.status(401).json({ type: 'error', message: 'Error de Fs' });
+          } else {
+            res
+              .status(200)
+              .json({ type: 'exito', message: 'Imagen Borrada Exitosamenet' });
+            // await Media.findByIdAndDelete(req.params.id);
+          }
+        }
+      );
     }
   },
 };

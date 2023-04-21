@@ -10,7 +10,6 @@ const categoriaSchema = mongoose.Schema(
     slug: {
       type: String,
       required: true,
-      index: true,
       unique: true,
       set: (v) => v.toLowerCase().replace(/\W+/g, '-'),
     },

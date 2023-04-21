@@ -3,7 +3,7 @@ import Producto from '../models/Producto.js';
 const todosLosProductos = async (req, res) => {
   const { page } = req.query;
   const pageNumber = page || 1;
-  const pageSize = 14;
+  const pageSize = 10;
   try {
     const total = await Producto.countDocuments();
     const lista = await Producto.find()
@@ -22,10 +22,17 @@ const todosLosProductos = async (req, res) => {
 };
 
 const todosLosProductosCompleto = async (req, res) => {
+  const { page, limit } = req.query;
+  const pageNumber = page || 1;
+  const pageSize = limit || 12;
   try {
-    const lista = await Producto.find();
-
-    res.status(200).json({ type: 'Exitoso', lista });
+    const total = await Producto.countDocuments();
+    const lista = await Producto.find()
+      .skip(pageSize * (pageNumber - 1))
+      .limit(pageSize);
+    res
+      .status(200)
+      .json({ type: 'Exitoso', pageSize, pageNumber, lista, total });
   } catch (error) {
     res.status(500).json({
       type: 'error',
@@ -131,6 +138,15 @@ const borrarProducto = async (req, res) => {
   }
 };
 
+const subcategoriaProducto = async (req, res) => {
+  const traerProductos = await Producto.find({ subcategoria: req.params.id });
+  try {
+    res.status(200).json({ traerProductos });
+  } catch (error) {
+    res.status(402).json({ type: 'error', message: 'Hubo un problema', error });
+  }
+};
+
 export {
   todosLosProductos,
   todosLosProductosCompleto,
@@ -138,4 +154,5 @@ export {
   productoNuevo,
   actualizarProducto,
   borrarProducto,
+  subcategoriaProducto,
 };

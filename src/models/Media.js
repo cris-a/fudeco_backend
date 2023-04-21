@@ -2,7 +2,13 @@ import mongoose from 'mongoose';
 
 const mediaSchema = new mongoose.Schema(
   {
-    image: String,
+    nombreImagen: {
+      type: String,
+      unique: true,
+    },
+    path: {
+      type: String,
+    },
   },
 
   { timestamps: true }

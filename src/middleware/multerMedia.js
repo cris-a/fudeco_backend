@@ -1,20 +1,16 @@
 import multer from 'multer';
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null);
+  destination: function (req, file, cb) {
+    cb(null, '../../Test/frontend/src/data');
   },
-  filename: (req, file) => {
-    cb(null, file);
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
   },
 });
 
 const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === 'image/png' ||
-    file.mimetype === 'image/jpg' ||
-    file.mimetype === 'image/jpeg'
-  ) {
+  if (file.mimetype === 'image/png' || file.mimetype === 'image/webp') {
     cb(null, true);
   } else {
     cb(null, false);
@@ -25,6 +21,8 @@ const upload = multer({
   storage,
   fileFilter,
   limits: { fileSize: 1000000 * 5 },
-}).single('file'); // 5mb
+}); // 5mb
 
-export default upload;
+const uploads = upload.single('file');
+
+export default uploads;
