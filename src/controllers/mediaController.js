@@ -65,20 +65,15 @@ const mediaController = {
   },
 
   async soloNombre(req, res) {
-    // const existe = await Media.findOne({ nombre: req.file.filename });
-    // if (existe) {
-    //   res.status(403).json({ type: 'error', message: 'Imagen ya existe' });
-    // }
-    const body = req.body;
-    try {
-      const dato = await Imagenes.create(body);
-      res.status(200).json({ type: 'exito', dato });
-    } catch (error) {
-      res.status(402).json({
-        type: 'error',
-        error,
-      });
-    }
+    uploads(req, res, async (err) => {
+      try {
+        res
+          .status(200)
+          .json({ type: 'exito', message: 'Archivo subido con exito' });
+      } catch (error) {
+        console.log(error);
+      }
+    });
   },
 
   async borrar(req, res) {

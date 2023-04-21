@@ -9,7 +9,7 @@ router.get('/:id', mediaController.unaImagen);
 // router.post('/', mediaController.store);
 // router.delete('/:id', mediaController.destroy);
 router.delete('/filename/borrar/:nombreImagen', mediaController.borrar);
-router.post('/filename', uploads);
-router.post('/filename/productos', mediaController.soloNombre);
+router.post('/filename', mediaController.soloNombre);
+// router.post('/filename/productos', mediaController.soloNombre);
 
 export default router;
