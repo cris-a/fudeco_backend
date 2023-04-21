@@ -81,7 +81,7 @@ const mediaController = {
 
     if (path) {
       unlink(
-        `../../Test/frontend/src/data/${path.nombreImagen}`,
+        `../../Test/frontend/public/data/${path.nombreImagen}`,
         async (err) => {
           if (err) {
             res.status(401).json({ type: 'error', message: 'Error de Fs' });
