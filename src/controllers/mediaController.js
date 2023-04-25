@@ -1,17 +1,16 @@
-import Media from '../models/Media.js';
 import Imagenes from '../models/imagenes.js';
-import uploads from '../middleware/multerMedia.js';
-import multer from 'multer';
-import { unlink } from 'node:fs';
+import { v2 as cloudinary } from 'cloudinary';
 
 const mediaController = {
   async index(req, res, next) {
     const { page, limit } = req.query;
     const pageNumber = page || 1;
-    const pageSize = limit || 10;
+    const pageSize = limit || 24;
+
     try {
-      const result = await Media.countDocuments();
-      const lista = await Media.find()
+      const result = await Imagenes.countDocuments();
+      const lista = await Imagenes.find()
+
         .skip(pageSize * (pageNumber - 1))
         .limit(pageSize);
       res.status(200).json({ pageSize, pageNumber, lista, result });
@@ -65,34 +64,102 @@ const mediaController = {
   },
 
   async soloNombre(req, res) {
-    uploads(req, res, async (err) => {
-      try {
-        res
-          .status(200)
-          .json({ type: 'exito', message: 'Archivo subido con exito' });
-      } catch (error) {
-        console.log(error);
-      }
+    const { image } = req.body;
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_APY_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+      secure: true,
     });
+    const options = {
+      use_filename: true,
+      unique_filename: true,
+      overwrite: true,
+    };
+    const result = await cloudinary.uploader.upload(image, options);
+    const newProduct = new Imagenes({
+      image: result.secure_url,
+      identificador: result.public_id,
+    });
+    try {
+      const imagenGuardada = await newProduct.save();
+      res.status(201).json({
+        type: 'exito',
+        message: 'Producto creado exitosamente',
+        imagenGuardada,
+      });
+    } catch (error) {
+      res.status(500).json({
+        type: 'error',
+        message: 'Producto existente',
+        error,
+      });
+    }
+
+    // const { image } = await req.body;
+    // cloudinary.config({
+    //   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    //   api_key: process.env.CLOUDINARY_APY_KEY,
+    //   api_secret: process.env.CLOUDINARY_API_SECRET,
+    //   secure: true,
+    // });
+    // const result = await cloudinary.uploader.upload(image);
+    // const nuevaImagen = new Imagenes({
+    //   image: result.secure_url,
+    // });
+    // try {
+    //   const imagenGuardada = await nuevaImagen.save();
+    //   res.status(200).json({
+    //     type: 'exito',
+    //     imagenGuardada,
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   },
 
-  async borrar(req, res) {
-    let path = req.params;
+  // async soloNombre(req, res) {
+  //   uploads(req, res, async (err) => {
+  //     try {
+  //       res
+  //         .status(200)
+  //         .json({ type: 'exito', message: 'Archivo subido con exito' });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   });
+  // },
 
-    if (path) {
-      unlink(
-        `../../Test/frontend/public/data/${path.nombreImagen}`,
-        async (err) => {
-          if (err) {
-            res.status(401).json({ type: 'error', message: 'Error de Fs' });
-          } else {
-            res
-              .status(200)
-              .json({ type: 'exito', message: 'Imagen Borrada Exitosamenet' });
-            // await Media.findByIdAndDelete(req.params.id);
-          }
-        }
-      );
+  async borrar(req, res) {
+    const dato = req.params.id;
+    const existe = await Imagenes.findOne({ identificador: dato });
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_APY_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+      secure: true,
+    });
+
+    if (existe) {
+      try {
+        const erase = cloudinary.uploader.destroy(dato);
+        const borrado = await Imagenes.findOneAndDelete({
+          identificador: dato,
+        });
+        res.status(200).json({
+          type: 'exito',
+          message: 'Imagen borrada con exito',
+          borrado,
+        });
+      } catch (error) {
+        res.status(403).json({
+          type: 'error',
+          message: 'Hubo error al borrar',
+          error,
+        });
+      }
+    } else {
+      console.log('imagen no existe');
     }
   },
 };

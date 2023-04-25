@@ -2,9 +2,11 @@ import mongoose from 'mongoose';
 
 const imagenesSchema = new mongoose.Schema(
   {
-    nombreImagen: {
+    image: {
       type: String,
-      unique: true,
+    },
+    identificador: {
+      type: String,
     },
   },
 

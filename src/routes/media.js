@@ -8,7 +8,7 @@ router.get('/', mediaController.index);
 router.get('/:id', mediaController.unaImagen);
 // router.post('/', mediaController.store);
 // router.delete('/:id', mediaController.destroy);
-router.delete('/filename/borrar/:nombreImagen', mediaController.borrar);
+router.delete('/filename/borrar/:id', mediaController.borrar);
 router.post('/filename', mediaController.soloNombre);
 // router.post('/filename/productos', mediaController.soloNombre);
 

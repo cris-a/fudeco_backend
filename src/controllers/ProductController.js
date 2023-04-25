@@ -1,4 +1,6 @@
 import Producto from '../models/Producto.js';
+import { v2 as cloudinary } from 'cloudinary';
+import Imagenes from '../models/imagenes.js';
 
 const todosLosProductos = async (req, res) => {
   const { page } = req.query;
@@ -67,7 +69,32 @@ const productoSencillo = async (req, res) => {
 // Nuevo producto
 
 const productoNuevo = async (req, res) => {
-  const newProduct = new Producto(req.body);
+  const {
+    nombre,
+    descripcion,
+    precio,
+    categoria,
+    sku,
+    subcategoria,
+    slug,
+    unidad,
+    imagen,
+    cantidad,
+  } = req.body;
+
+  const newProduct = new Producto({
+    nombre,
+    descripcion,
+    precio,
+    categoria,
+    cantidad,
+    sku,
+    subcategoria,
+    slug,
+    unidad,
+    imagen,
+  });
+
   try {
     const savedProduct = await newProduct.save();
     res.status(201).json({

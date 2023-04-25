@@ -9,6 +9,7 @@ import cliente_route from './Clientes.js';
 import newsletter_route from './Newsletter.js';
 import webpay_route from './Webpay.js';
 import subCategoria_router from './subCategoria.js';
+import cloudinary_router from './Cloudinary.js';
 
 export {
   auth_route,
@@ -22,4 +23,5 @@ export {
   newsletter_route,
   webpay_route,
   subCategoria_router,
+  cloudinary_router,
 };
