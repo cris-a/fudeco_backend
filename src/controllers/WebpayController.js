@@ -13,7 +13,6 @@ const webpay = {
   async valorWebpay(req, res) {
     const valor = await Carrito.findById(req.params.id);
     monto = valor.total;
-
     try {
       if (!valor) {
         res.status(404).json({
@@ -60,6 +59,7 @@ const webpay = {
         pagar = response.data.url;
         res.status(200).json({ webpay_peticion, pagar });
       })
+
       .catch(function (error) {
         console.error(error);
       });
@@ -82,7 +82,6 @@ const webpay = {
       .request(process.env.WEBPAY_URL + '/' + token_ws, options)
       .then(function (response) {
         token_respuesta = response.data;
-
         if (token_respuesta.status !== '') {
           const nuevaOrdenWebpay = new Webpay({
             buy_order: token_respuesta.buy_order,

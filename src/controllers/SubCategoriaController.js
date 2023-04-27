@@ -27,6 +27,19 @@ const mostrarSubCategorias = async (req, res) => {
   }
 };
 
+const unasubCategoria = async (req, res) => {
+  try {
+    const subCategorias = await SubCategoria.findOne({
+      _id: req.params.id,
+    });
+    res.status(200).json(subCategorias);
+  } catch (error) {
+    res.status(401).json({
+      message: error.message,
+    });
+  }
+};
+
 const actualizarSubCategoria = async (req, res) => {
   const buscarSubcat = await SubCategoria.findById(req.params.id);
   if (!buscarSubcat) {
@@ -95,4 +108,5 @@ export {
   borrarSubcategoria,
   actualizarSubCategoria,
   todasSubCategorias,
+  unasubCategoria,
 };
