@@ -17,6 +17,7 @@ const clienteNuevo = async (req, res) => {
     email: req.body.email,
     rut: req.body.rut,
     telefono: req.body.telefono,
+    esMayorista: req.body.mayorista,
     password: bcrypt.hashSync(req.body.password, 10),
   });
 
@@ -114,7 +115,7 @@ const nuevoPassword = async (req, res) => {
   const cliente = await Cliente.findOne({ token });
 
   if (cliente) {
-    cliente.password = password;
+    cliente.password = req.body.password;
     cliente.token = '';
     try {
       await cliente.save();

@@ -37,6 +37,9 @@ const clienteSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    esMayorista: {
+      type: Boolean,
+    },
   },
   { timestamps: true }
 );

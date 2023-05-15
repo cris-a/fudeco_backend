@@ -79,7 +79,11 @@ const productoNuevo = async (req, res) => {
     slug,
     unidad,
     imagen,
+    imagenDos,
+    imagenTres,
     cantidad,
+    mayorista,
+    minimoMayorista,
   } = req.body;
 
   const newProduct = new Producto({
@@ -93,6 +97,10 @@ const productoNuevo = async (req, res) => {
     slug,
     unidad,
     imagen,
+    imagenDos,
+    imagenTres,
+    mayorista,
+    minimoMayorista,
   });
 
   try {

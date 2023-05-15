@@ -83,7 +83,7 @@ export const emailRegistroCliente = async (datos) => {
     text: 'Comprueba tu cuenta en Fudeco',
     html: `<p>Hola: ${nombre} Comprueba tu cuenta en Fudeco</p>
         <p>Tu cuenta ya esta casi lista, solo debes comprobarla en el siguente enlace:
-        <a href="${process.env.FONTEND_URL}/confirmarCliente/${token}">Comprobar cuenta</a></p>
+        <a href="${process.env.FONTEND_URL}/tienda/cliente/confirmarCliente/${token}">Comprobar cuenta</a></p>
 
         <p>Si no creaste esta cuenta, por favor ignora este mensaje</p>
         

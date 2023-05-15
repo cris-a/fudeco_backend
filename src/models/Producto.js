@@ -27,7 +27,18 @@ const productSchema = mongoose.Schema(
     imagen: {
       type: String,
     },
+    imagenDos: {
+      type: String,
+    },
+    imagenTres: {
+      type: String,
+    },
     precio: {
+      type: Number,
+      default: 0,
+      trim: true,
+    },
+    mayorista: {
       type: Number,
       default: 0,
       trim: true,
@@ -38,6 +49,11 @@ const productSchema = mongoose.Schema(
       trim: true,
     },
     cantidad: {
+      type: Number,
+      default: 1,
+      trim: true,
+    },
+    minimoMayorista: {
       type: Number,
       default: 1,
       trim: true,
