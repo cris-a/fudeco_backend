@@ -13,7 +13,7 @@ import {
 const router = express.Router();
 
 router.get('/', todosLosProductos);
-router.get('/:id', productoSimple);
+router.get('/simple/:id', productoSimple);
 router.get('/subcate/:id', subcategoriaProducto);
 router.get('/todos', todosLosProductosCompleto);
 // router.get('/barraBusqueda', productoSencillo);
