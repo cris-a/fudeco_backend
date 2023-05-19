@@ -15,7 +15,7 @@ export const emailRegistro = async (datos) => {
   // informacion email
 
   const info = await transport.sendMail({
-    from: '"Fudeco - Administrador" <cuentas@fudeco.com>',
+    from: '"Fudeco - Administrador" <administracion@fudeco.cl>',
     to: email,
     subject: 'Fudeco - Confirmar cuenta',
     text: 'Comprueba tu cuenta en Fudeco',
@@ -47,7 +47,7 @@ export const emailOlvidePassword = async (datos) => {
   // informacion email
 
   const info = await transport.sendMail({
-    from: '"Fudeco - Administrador" <cuentas@fudeco.com>',
+    from: '"Fudeco - Administrador" <administracion@fudeco.cl>',
     to: email,
     subject: 'Fudeco - Reestablecer tu password',
     text: 'Restablece tu password',
@@ -77,7 +77,7 @@ export const emailRegistroCliente = async (datos) => {
   // informacion email
 
   const info = await transport.sendMail({
-    from: '"Fudeco - Administrador" <cuentas@fudeco.com>',
+    from: '"Fudeco - Administrador" <administracion@fudeco.cl>',
     to: email,
     subject: 'Fudeco - Confirmar cuenta Cliente',
     text: 'Comprueba tu cuenta en Fudeco',
@@ -109,7 +109,7 @@ export const emailOlvidePasswordCliente = async (datos) => {
   // informacion email
 
   const info = await transport.sendMail({
-    from: '"Fudeco - Administrador" <cuentas@fudeco.com>',
+    from: '"Fudeco - Administrador" <administracion@fudeco.cl>',
     to: email,
     subject: `Fudeco - Reestablecer tu password ${nombre}`,
     text: 'Restablece tu password',
@@ -141,7 +141,7 @@ export const ordenConfirmada = async (datos) => {
   // informacion email
 
   const info = await transport.sendMail({
-    from: '"Fudeco - Administrador" <cuentas@fudeco.com>',
+    from: '"Fudeco - Administrador" <administracion@fudeco.cl>',
     to: email,
     subject: `Fudeco - Tu orden ha sido recibida ${nombre}`,
     text: 'Orden Recibida',

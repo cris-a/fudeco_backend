@@ -46,7 +46,7 @@ const todosLosProductosCompleto = async (req, res) => {
 
 //buscar un solo producto
 
-const productoSencillo = async (req, res) => {
+const productoSimple = async (req, res) => {
   try {
     const producto = await Producto.findById(req.params.id);
     if (!producto) {
@@ -66,6 +66,55 @@ const productoSencillo = async (req, res) => {
   }
 };
 
+//Busqueda de productos por nombre
+
+// const productoSencillo = async (req, res) => {
+//   let q = req.query.q;
+//   try {
+//     const producto = await Producto.find(
+//       {
+//         nombre: {
+//           $regex: new RegExp(q),
+//           $options: 'i',
+//         },
+//       },
+//       {
+//         _id: 1,
+//         nombre: 1,
+//         imagen: 1,
+//         precio: 1,
+//       }
+//     );
+//     res.status(200).json({
+//       producto,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       type: 'error',
+//       message: 'Algo salió mal, intenta nuevamente',
+//       error,
+//     });
+//   }
+
+// try {
+
+//   if (!producto) {
+//     res.status(404).json({
+//       type: 'error',
+//       message: 'Producto no existe',
+//     });
+//   } else {
+//     res.status(200).json(producto);
+//   }
+// } catch (error) {
+//   res.status(500).json({
+//     type: 'error',
+//     message: 'Algo salió mal, intenta nuevamente',
+//     error,
+//   });
+// }
+// };
+
 // Nuevo producto
 
 const productoNuevo = async (req, res) => {
@@ -84,6 +133,7 @@ const productoNuevo = async (req, res) => {
     cantidad,
     mayorista,
     minimoMayorista,
+    descripcionCorta,
   } = req.body;
 
   const newProduct = new Producto({
@@ -101,6 +151,7 @@ const productoNuevo = async (req, res) => {
     imagenTres,
     mayorista,
     minimoMayorista,
+    descripcionCorta,
   });
 
   try {
@@ -185,9 +236,10 @@ const subcategoriaProducto = async (req, res) => {
 export {
   todosLosProductos,
   todosLosProductosCompleto,
-  productoSencillo,
+  // productoSencillo,
   productoNuevo,
   actualizarProducto,
   borrarProducto,
   subcategoriaProducto,
+  productoSimple,
 };

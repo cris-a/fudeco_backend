@@ -67,6 +67,9 @@ const productSchema = mongoose.Schema(
       type: String,
       required: false,
     },
+    descripcionCorta: {
+      type: String,
+    },
   },
   {
     timestamps: true,

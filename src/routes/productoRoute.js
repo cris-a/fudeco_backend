@@ -1,20 +1,22 @@
 import express from 'express';
 import {
   todosLosProductos,
-  productoSencillo,
+  // productoSencillo,
   productoNuevo,
   actualizarProducto,
   borrarProducto,
   todosLosProductosCompleto,
   subcategoriaProducto,
+  productoSimple,
 } from '../controllers/ProductController.js';
 
 const router = express.Router();
 
 router.get('/', todosLosProductos);
+router.get('/:id', productoSimple);
 router.get('/subcate/:id', subcategoriaProducto);
 router.get('/todos', todosLosProductosCompleto);
-router.get('/:id', productoSencillo);
+// router.get('/barraBusqueda', productoSencillo);
 router.post('/:id', productoNuevo);
 router.put('/:id', actualizarProducto);
 router.delete('/:id', borrarProducto);
