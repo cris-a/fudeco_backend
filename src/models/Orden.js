@@ -18,6 +18,7 @@ const ordenSchema = new mongoose.Schema(
 
     costo_envio: { type: Number, default: 0 },
     direccion: { type: String, require: true },
+    direccionAlter: { type: String, require: false },
     telefono: { type: Number, require: true },
     metodo_pago: {
       type: String,
