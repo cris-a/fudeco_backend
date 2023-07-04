@@ -11,6 +11,7 @@ import {
 } from './ProductController.js';
 import UserController from './UsuarioController.js';
 import mediaController from './mediaController';
+import PedidoController from './PedidosController.js';
 
 export default {
   AuthController,
@@ -24,4 +25,5 @@ export default {
   borrarProducto,
   UserController,
   mediaController,
+  PedidoController,
 };

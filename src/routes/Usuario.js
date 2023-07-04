@@ -8,10 +8,10 @@ import {
 
 import UserController from '../controllers/UsuarioController.js';
 
-router.get('/', isAdminVerifier, UserController.usuarios_todos);
+router.get('/', UserController.usuarios_todos);
 router.get('/:id', UserController.usuario_unico);
 router.get('/:stats', isAdminVerifier, UserController.datos_usuario);
-router.put('/:id', accessLevelVerifier, UserController.actualizar_usuario);
-router.delete('/:id', isAdminVerifier, UserController.borrar_usuario);
+router.put('/:id', UserController.actualizar_usuario);
+router.delete('/:id', UserController.borrar_usuario);
 
 export default router;

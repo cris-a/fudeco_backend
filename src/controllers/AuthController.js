@@ -10,6 +10,11 @@ const create_user = async (req, res) => {
     nombre: req.body.nombre,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
+    cargo: req.body.cargo,
+    direccion: req.body.direccion,
+    direccionAlter: req.body.direccionAlter,
+    telefono: req.body.telefono,
+    rut: req.body.rut,
   });
 
   if (existeUsuario) {

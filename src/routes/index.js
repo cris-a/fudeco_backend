@@ -11,6 +11,7 @@ import webpay_route from './Webpay.js';
 import subCategoria_router from './subCategoria.js';
 import cloudinary_router from './Cloudinary.js';
 import busqueda_router from './Busqueda.js';
+import pedido_router from './Pedido.js';
 
 export {
   auth_route,
@@ -26,4 +27,5 @@ export {
   subCategoria_router,
   cloudinary_router,
   busqueda_router,
+  pedido_router,
 };

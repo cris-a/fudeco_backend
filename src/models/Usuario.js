@@ -31,6 +31,10 @@ const usuarioSchema = new mongoose.Schema(
     cargo: {
       type: String,
     },
+    direccion: { type: String },
+    direccionAlter: { type: String },
+    telefono: { type: Number },
+    rut: { type: String },
   },
   { timestamps: true }
 );
