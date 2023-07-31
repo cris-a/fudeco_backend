@@ -134,6 +134,13 @@ const productoNuevo = async (req, res) => {
     mayorista,
     minimoMayorista,
     descripcionCorta,
+    idBsale,
+    idStock,
+    idVariante,
+    stockQty,
+    hrefProductoBsale,
+    officeid,
+    variantId,
   } = req.body;
 
   const newProduct = new Producto({
@@ -152,6 +159,13 @@ const productoNuevo = async (req, res) => {
     mayorista,
     minimoMayorista,
     descripcionCorta,
+    idBsale,
+    idStock,
+    idVariante,
+    stockQty,
+    hrefProductoBsale,
+    officeid,
+    variantId,
   });
 
   try {

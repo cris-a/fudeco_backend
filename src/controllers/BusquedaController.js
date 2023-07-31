@@ -17,6 +17,7 @@ const productoSencillo = async (req, res) => {
         nombre: 1,
         imagen: 1,
         precio: 1,
+        variantId: 1,
       }
     );
     res.status(200).json({
@@ -30,4 +31,5 @@ const productoSencillo = async (req, res) => {
     });
   }
 };
+
 export { productoSencillo };

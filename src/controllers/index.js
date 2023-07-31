@@ -12,6 +12,17 @@ import {
 import UserController from './UsuarioController.js';
 import mediaController from './mediaController';
 import PedidoController from './PedidosController.js';
+import BsaleController from './BsaleController.js';
+import BsaleProductosController from './BsaleProductosController.js';
+import BsaleListaPrecioscontroller from './BsaleListaPreciosController.js';
+import BsaleTipoDocumentoController from './BsaleTipoDocumentoController.js';
+import BsaleFacturacionController from './BsaleFacturacionController.js';
+import BsaleVariantesController from './Bsalevariantes.js';
+import BsaleStockController from './BsaleStockController.js';
+import BsaleSucursalController from './BsaleSucursales.js';
+import BsaleClienteController from './BsaleClientesController.js';
+import BsaleTaxController from './BsaleTaxesController.js';
+import BsalePaymentTypeController from './BsalePaymentTypeController.js';
 
 export default {
   AuthController,
@@ -26,4 +37,15 @@ export default {
   UserController,
   mediaController,
   PedidoController,
+  BsaleController,
+  BsaleProductosController,
+  BsaleListaPrecioscontroller,
+  BsaleTipoDocumentoController,
+  BsaleFacturacionController,
+  BsaleVariantesController,
+  BsaleStockController,
+  BsaleSucursalController,
+  BsaleClienteController,
+  BsaleTaxController,
+  BsalePaymentTypeController,
 };

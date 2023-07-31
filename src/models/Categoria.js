@@ -23,6 +23,9 @@ const categoriaSchema = mongoose.Schema(
       required: false,
       unique: false,
     },
+    bsaleId: {
+      type: Number,
+    },
     imagen: {
       type: String,
     },

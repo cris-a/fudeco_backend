@@ -12,6 +12,18 @@ import subCategoria_router from './subCategoria.js';
 import cloudinary_router from './Cloudinary.js';
 import busqueda_router from './Busqueda.js';
 import pedido_router from './Pedido.js';
+import bsale_router from './Bsale.js';
+import bsaleProducts_router from './BsaleProducts.js';
+import bsaleLista_router from './BsaleListaPrecios.js';
+import bsaleDoc_router from './BsaleTipoDocumento.js';
+import bsaleFacturacion_router from './BsaleFacturacion.js';
+import bsaleVariante_router from './BsaleVariant.js';
+import bsaleStock_router from './BsaleStock.js';
+import bsaleTipoDocumento_router from './BsaleTipoDocumento.js';
+import bsaleSucursal_router from './BsaleSucursal.js';
+import bsaleClientes_router from './BsaleClientes.js';
+import bsaleTaxes_router from './BsaleTax.js';
+import bsaleFormaPago_router from './BsaleFormaPago.js';
 
 export {
   auth_route,
@@ -28,4 +40,16 @@ export {
   cloudinary_router,
   busqueda_router,
   pedido_router,
+  bsale_router,
+  bsaleProducts_router,
+  bsaleLista_router,
+  bsaleDoc_router,
+  bsaleFacturacion_router,
+  bsaleVariante_router,
+  bsaleStock_router,
+  bsaleTipoDocumento_router,
+  bsaleSucursal_router,
+  bsaleClientes_router,
+  bsaleTaxes_router,
+  bsaleFormaPago_router,
 };

@@ -18,6 +18,18 @@ import {
   cloudinary_router,
   busqueda_router,
   pedido_router,
+  bsale_router,
+  bsaleProducts_router,
+  bsaleLista_router,
+  bsaleDoc_router,
+  bsaleFacturacion_router,
+  bsaleVariante_router,
+  bsaleStock_router,
+  bsaleTipoDocumento_router,
+  bsaleSucursal_router,
+  bsaleClientes_router,
+  bsaleTaxes_router,
+  bsaleFormaPago_router,
 } from './routes/index.js';
 
 const app = express();
@@ -59,6 +71,18 @@ app.use('/api/v1/subcategoria', subCategoria_router);
 app.use('/api/v1/cloudinary', cloudinary_router);
 app.use('/api/v1/busqueda', busqueda_router);
 app.use('/api/v1/pedido', pedido_router);
+app.use('/api/v1/bsale', bsale_router);
+app.use('/api/v1/bsale_producto', bsaleProducts_router);
+app.use('/api/v1/bsale_lista', bsaleLista_router);
+app.use('/api/v1/bsale_doc', bsaleDoc_router);
+app.use('/api/v1/bsale_fac', bsaleFacturacion_router);
+app.use('/api/v1/bsale_variante', bsaleVariante_router);
+app.use('/api/v1/bsale_stock', bsaleStock_router);
+app.use('/api/v1/bsale_tipo_documento', bsaleTipoDocumento_router);
+app.use('/api/v1/bsale_sucursales', bsaleSucursal_router);
+app.use('/api/v1/bsale_clientes', bsaleClientes_router);
+app.use('/api/v1/bsale_tax', bsaleTaxes_router);
+app.use('/api/v1/bsale_formaPago', bsaleFormaPago_router);
 
 const servidor = app.listen(app.get('port'), () => {
   console.log(`Server on port ${app.get('port')} `);

@@ -70,6 +70,27 @@ const productSchema = mongoose.Schema(
     descripcionCorta: {
       type: String,
     },
+    hrefProductoBsale: {
+      type: String,
+    },
+    idBsale: {
+      type: Number,
+    },
+    idStock: {
+      type: String,
+    },
+    idVariante: {
+      type: String,
+    },
+    variantId: {
+      type: Number,
+    },
+    stockQty: {
+      type: String,
+    },
+    officeid: {
+      type: Number,
+    },
   },
   {
     timestamps: true,
